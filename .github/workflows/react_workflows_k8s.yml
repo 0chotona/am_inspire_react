@@ -34,7 +34,7 @@ jobs:
       - name: image build and push docker image to ecr 
         env:
           REGISTRY: 933090817123.dkr.ecr.ap-northeast-2.amazonaws.com
-          REPOSITORY: order-0chotona-frontend
+          REPOSITORY: react-0chotona-frontend
           IMAGE_TAG: latest
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile .

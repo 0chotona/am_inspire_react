@@ -1,0 +1,9 @@
+.wrapper
+{
+    border: 1px solid gray;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    padding: 5px;
+}

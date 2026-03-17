@@ -1,0 +1,46 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "오늘 학습 곡선이 높다..:)",
+      "content": "강사님과 함께하니 즐거워"
+    },
+    {
+      "id": 2,
+      "title": "spa 기반 react :)",
+      "content": "문법이 너무 생소해"
+    },
+    {
+      "id": 1766984890247,
+      "title": "2025년이 끝이라니",
+      "content": "늙었다 나도"
+    },
+    {
+      "id": 1766984975625,
+      "title": "너무 졸려",
+      "content": "흑흑"
+    },
+    {
+      "id": 1767067683671,
+      "title": "개 졸리넹",
+      "content": "ㅇㅇ"
+    }
+  ],
+  "users": [
+    {
+      "name": "은종혁",
+      "email": "eunjongpika@naver.com",
+      "password": "123123",
+      "id": 1
+    },
+    {
+      "name": "임지혜",
+      "email": "limwisdom@naver.com",
+      "password": "111",
+      "id": 2
+    }
+  ],
+  "comments": [
+    
+  ]
+}

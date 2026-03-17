@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: react-deployment
+  namespace: lgcns
+
+spec:
+  revisionHistoryLimit: 2
+  
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react
+      version: blue
+
+  template:
+    metadata:
+      labels:
+        app: react
+        version: blue
+    spec:
+      containers:
+        - name: react-container
+          image: 933090817123.dkr.ecr.ap-northeast-2.amazonaws.com/react-0chotona-frontend:latest
+          ports:
+          - containerPort: 80
+          

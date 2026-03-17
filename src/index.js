@@ -59,11 +59,11 @@ import reportWebVitals from './reportWebVitals';
 //   <UserPage/>
 // );
 
-// import BlogApp from './BlogApp';
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <BlogApp/>
-// );
+import BlogApp from './BlogApp';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BlogApp />
+);
 
 // import ContextApp from './ContextApp';
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -77,11 +77,11 @@ import reportWebVitals from './reportWebVitals';
 //   <WeatherPage/>
 // );
 
-import ForcastApp from './ForcastApp';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <ForcastApp/>
-);
+// import ForcastApp from './ForcastApp';
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <ForcastApp/>
+// );
 
 
 // If you want to start measuring performance in your app, pass a function

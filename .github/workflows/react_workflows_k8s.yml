@@ -1,0 +1,61 @@
+name: react deploy to eks
+
+on:
+  push:
+    branches:
+      - main
+env:
+  AWS_REGION: ap-northeast-2
+jobs:
+  # job name
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout github
+        uses: actions/checkout@v2
+
+      
+
+      - name: aws configure
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # aws - ecr login
+      - name: aws ecr login
+        uses: aws-actions/amazon-ecr-login@v2
+
+
+  
+      
+      # docker image build and push
+      - name: image build and push docker image to ecr 
+        env:
+          REGISTRY: 933090817123.dkr.ecr.ap-northeast-2.amazonaws.com
+          REPOSITORY: order-0chotona-frontend
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+      
+      # cubectl install
+      - name: install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: "v1.34.1"
+
+      # kubectl config
+      - name: aws eks cluster update
+        run: aws eks update-kubeconfig --region ap-northeast-2 --name lgcns-0chotona-cluster
+
+      
+      # 배포
+      - name: kubectl apply
+        # .github/workflows 폴더는 가상 폴러기 때문에 위치를 root로 가정
+        run: |
+          kubectl apply -f k8s/react-blue-deployment.yml
+          kubectl apply -f k8s/react-green-deployment.yml
+          kubectl apply -f k8s/react-service.yml
+          kubectl apply -f k8s/react-ingress.yml
